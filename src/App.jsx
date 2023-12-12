@@ -21,7 +21,7 @@ function App() {
         <Route path='/' element={<Sidebar/>}>
         <Route index element={<Shopage/>}/>
         <Route path='/contact-us' element={<Contact/>} />
-        <Route path='/login' element={<Home/>} />
+        <Route path='/login/callback' element={<Home/>} />
         </Route>
       </Routes>  
   </Security>

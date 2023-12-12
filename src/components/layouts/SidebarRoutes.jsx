@@ -16,7 +16,7 @@ const unauthUserRoutes = {
     links: [
       {
         title: "Вход",
-        path: "/login",
+        path: "/login/callback",
         icon: <SlLogin />,
       },
     ],

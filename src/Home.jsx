@@ -3,7 +3,9 @@ import { useOktaAuth } from '@okta/okta-react';
 
 const Home = () => {
     const { authState, oktaAuth } = useOktaAuth();
-    const handleLogin = () => oktaAuth.signInWithRedirect();
+    const handleLogin = () => oktaAuth.signInWithRedirect().then((res)=>{
+        console.log(res.data)
+    });
     const handleLogout = () => oktaAuth.signOut();
   return (
     <div>
