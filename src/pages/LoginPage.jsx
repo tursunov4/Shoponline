@@ -71,14 +71,17 @@ const LoginPage = () => {
         {
             !authState?.accessToken ? (
                 <>
-                <p>Please log in</p>
-             
+                <div className="loginPage__wrapp">
+                <h4>Please log in</h4>             
                 <button type="button" onClick={handleLogin}>Login </button>
+                </div>
               </>
             ):(
                 <>
-                <p>You&apos;re logged in!</p>
+                <div className="loginPage__wrapp">
+                <h4>You&apos;re logged in!</h4>
                 <button type="button" onClick={handleLogout}>Logout</button>
+                </div>
               </>  
             )
         }
