@@ -35,7 +35,7 @@ export default function Sidebar() {
           </SideBarHeader>
           {
             token &&
-             <SideBarProfile open={open} />
+             <SideBarProfile setOpen={setOpen} open={open} />
           }
 
           <SideBarLinks open={open} />

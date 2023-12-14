@@ -1,27 +1,28 @@
 
-import { useOktaAuth } from '@okta/okta-react';
 import "./style.css"
-import { useEffect, useState } from 'react';
-
+import {useNavigate } from "react-router-dom"
 const LoginPage = () => {
-    const { authState, oktaAuth  } = useOktaAuth();
-    const handleLogin = () => oktaAuth.signInWithRedirect()
-    const handleLogout = () => oktaAuth.signOut();
+    const token = sessionStorage.getItem("token")
+    const navigate = useNavigate()
+     const handleLogut =()=>{
+        sessionStorage.removeItem("token")
+        navigate("/")
+     }
   return (
     <div>
         {
-            !authState?.accessToken ? (
+             !token ? (
                 <>
                 <div className="loginPage__wrapp">
                 <h4>Please log in</h4>             
-                <button type="button" onClick={handleLogin}>Login </button>
+                <a href="https://admin.mytestproject.click/accounts/okta/login/">Login </a>
                 </div>
               </>
             ):(
                 <>
                 <div className="loginPage__wrapp">
                 <h4>You&apos;re logged in!</h4>
-                <button type="button" onClick={handleLogout}>Logout</button>
+                <a onClick={handleLogut}>Logout</a>
                 </div>
               </>  
             )

@@ -6,7 +6,6 @@ import axios from "axios"
 import { Preloader, PreloaderWrapper } from '../styles/Preloader';
 
 const Loading = () => {
-  const { authState, oktaAuth  } = useOktaAuth();
   const navigate = useNavigate()
   const queryParams = new URLSearchParams(location.search);
   const token = queryParams.get('token');

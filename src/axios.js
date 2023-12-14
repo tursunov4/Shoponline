@@ -9,7 +9,7 @@ http.interceptors.request.use(
     (config) => {
      let token = sessionStorage.getItem('token')
      if(token){
-         config.headers["Authorization"] = `Bearer ${token}`;
+         config.headers["Authorization"] = `Token ${token}`;
      }
       // config.headers["Accept"] = "application/json";
 

@@ -11,7 +11,7 @@
    font-size: 32px;
    font-weight: 400;
 }
-.loginPage__wrapp button{
+.loginPage__wrapp a{
     border: none;
     outline: none;
     background-color: aqua  ;

@@ -9,6 +9,7 @@ import Contact from './pages/Contact';
 import LoginPage from './pages/LoginPage';
 import Loading from './pages/Loading';
 import UserProfile from './pages/Profile';
+import OrdersPage from './pages/OrdersPage';
 const oktaAuth = new OktaAuth(config.oidc);
 function App() {
   const navigate = useNavigate();
@@ -24,6 +25,8 @@ function App() {
         <Route index element={<Shopage/>}/>
         <Route path='/contact-us' element={<Contact/>} />
         <Route path='/profile' element={<UserProfile/>}/>
+        <Route path='/orders' element={<OrdersPage/>} />
+        <Route path='/login' element={<LoginPage/>} />
         <Route path='/login/callback' element={<Loading/> } />
         </Route>
       </Routes>  

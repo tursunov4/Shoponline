@@ -1,12 +1,12 @@
 import { useState } from "react"
 import  "./select.css"
 import { IoIosArrowDown } from "react-icons/io";
-const Costumselect = ({selected , setSelected , options}) => {
+const Costumselect = ({selected , setSelected , options ,plecholders}) => {
     const [isActive , setIsActive ] = useState(false)
   return (
     <div className="dropdown">
         <div className="dropdown-btn" onClick={()=>setIsActive(!isActive)}>
-            {selected =="" ? "choose slect" :selected}
+            {selected == "" ? `${plecholders}` : options[options?.findIndex(function(obj) { return obj.id === selected; })]?.title}
             <span className={isActive ? "dropdown__arrow" :" "}><IoIosArrowDown/></span>
         </div>
         {

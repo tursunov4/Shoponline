@@ -1,61 +1,58 @@
 import {HeadTitle} from "../styles/global.jsx";
 import {Table, TableWrapper} from "../styles/Tables.jsx";
-
-import {useRef} from "react";
+import {useEffect, useState} from "react";
 import {Search} from "../components/SearchPanel.jsx";
 import {AiOutlineSearch} from "react-icons/ai";
-import {useQuery} from "react-query";
-import SettingsServices from "../../services/SettingsServices.jsx";
-import OrderServices from "../../services/OrderServices.jsx";
 import {Preloader, PreloaderWrapper} from "../styles/Preloader.jsx";
 import OrderTr from "../components/orders/OrdersTr.jsx";
-
+import http from "../axios.js";
+import { useDebounce } from "../hooks/useDebance.jsx";
 export default function OrdersPage() {
     const headers = [
         "Id заказа",
         "Наименование",
-        "Пользователь",
         "Цена",
+        "currency",
         "Дата заявки",
         "Статус",
     ];
-
-
-    const page = useRef(1);
-    const title = useRef("");
-    const {data, isLoading, isError, isRefetching, refetch} =
-        useQuery("adminorders", () =>
-            OrderServices.getAdminOrders(title.current)
-        );
-    if(data){
-        console.log(data)
+    const [data ,setData] = useState([])
+    const [search ,setSearch] = useState("")
+    const [isLoding , setIsLoading] = useState(false)
+    const searchDebounce = useDebounce(search, 500)
+    const getOrders =()=>{  
+        setIsLoading(true)
+        http.get(`/order/list/?status=${searchDebounce}`).then((res)=>{
+            console.log(res.data)
+            setData(res.data)
+            setIsLoading(false)
+        }).catch((err)=>{
+            console.log(err)
+            setIsLoading(false)
+        })
     }
+    useEffect(()=>{
+     getOrders()
+    } ,[searchDebounce])
+   
 
     return (
         <>
-            {/* {isLoading && (
+             {isLoding && (
                 <PreloaderWrapper>
                     <Preloader/>
                 </PreloaderWrapper>
             )}
-            {isRefetching && (
-                <PreloaderWrapper>
-                    <Preloader/>
-                </PreloaderWrapper>
-            )} */}
+            
             <HeadTitle>Orders</HeadTitle>
             <Search>
                 <input
-                    onChange={(event) => (title.current = event.target.value)}
+                    onChange={(e)=>setSearch(e.target.value)}
                     type="text"
                     placeholder="Search..."
                 />
                 <button
-                    onClick={(event) => {
-                        page.current = 1;
-                        refetch();
-                        event.preventDefault();
-                    }}
+                   
                 >
                     <AiOutlineSearch/>
                 </button>
@@ -70,8 +67,12 @@ export default function OrdersPage() {
                     </tr>
                     </thead>
                     <tbody>
-                    {data && data.data.map((order, index) => (<OrderTr key={index} order={order}/>))}
-
+                    {/* {data && data.data.map((order, index) => (<OrderTr key={index} order={order}/>))} */}
+                        {
+                            data?.map((item , index) =>(
+                                <OrderTr key={index} order={item}/>
+                            ))
+                        }
                     </tbody>
                 </Table>
             </TableWrapper>

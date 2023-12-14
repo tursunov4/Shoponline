@@ -6,13 +6,13 @@ import ProductCardComponent from "../components/shop/ProductCardComponent.jsx";
 import {AiOutlineSearch} from "react-icons/ai";
 import {Search} from "../components/SearchPanel.jsx";
 import Filter from "../components/shop/Filter/Filter";
+import axios from "axios"
 import http from "../axios"
 import { useDebounce } from "../hooks/useDebance.jsx";
 import Costumselect from "../components/shop/Coustumselect/Coustumselect.jsx";
+import { server_url } from "../../services/conf.jsx";
 
 export default function ShopPage() {
-
-
     const [data , setData] = useState([])
     const [isLoading ,setIsLoading] = useState(false)
     const [search ,setSearch] = useState("")
@@ -20,18 +20,16 @@ export default function ShopPage() {
     const [officeOption , setOficeOption] = useState([])
     const [selectoffice ,setSelectoffice] = useState("")
     const [oraga ,setOrganization] = useState([])
-    const [selectorga ,setSelectorga] = useState("")
-
-    
-    
+    const [selectorga ,setSelectorga] = useState("")  
+    const pl ="dadfa"  
     const getOffice =()=>{
-        http.get("/office/list/").then((res)=>{
-            console.log(res.data)
+        axios.get( server_url + "/office/list/").then((res)=>{
+            console.log(res.data)       
             setOficeOption(res.data)
         }).catch((err)=>{
             console.log(err)
         })
-        http.get("/organization/list/").then((res)=>{
+        axios.get( server_url +"/organization/list/").then((res)=>{
             console.log(res.data)
             setOrganization(res.data)
         }).catch((err)=>{
@@ -41,7 +39,7 @@ export default function ShopPage() {
 
      const getData = ()=>{
         setIsLoading(true)
-      http.get(`/product/list/?title=${searchDebance}&office=${selectoffice}&organization=${selectorga}`).then((res)=>{
+      axios.get( server_url +`/product/list/?title=${searchDebance}&office=${selectoffice}&organization=${selectorga}`).then((res)=>{
         console.log(res.data.results )
          setData(res.data.results)
         setIsLoading(false)
@@ -69,8 +67,8 @@ export default function ShopPage() {
             }
             <HeadTitle>Shopping List</HeadTitle>      
              <div className="filter__wrapper">
-                <Costumselect options={officeOption} selected={selectoffice} setSelected={setSelectoffice}/>
-                <Costumselect options={oraga} selected={selectorga} setSelected={setSelectorga}/>
+                <Costumselect plecholders={"Choose office"} options={officeOption} selected={selectoffice} setSelected={setSelectoffice}/>
+                <Costumselect plecholders={"Choose organizations"} options={oraga} selected={selectorga} setSelected={setSelectorga}/>
              </div>
             <Search>
                 <input
@@ -78,8 +76,7 @@ export default function ShopPage() {
                     type="text"
                     placeholder="Search..."
                 />
-                <button                   
-                >
+                <button   >
                     <AiOutlineSearch/>
                 </button>
             </Search>

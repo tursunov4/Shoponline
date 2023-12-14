@@ -12,27 +12,33 @@ import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import http from "../../axios.js";
 
 export default function ProductCardComponent({product}) {
     const [modalActive, setModalActive] = useState(false);
     const [buttonActive, setButtonActive] = useState(false);
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
+    const token = sessionStorage.getItem("token")
     const navigate = useNavigate();
-
-    const handleClick = (productId, orderStatus) => {
-        OrderServices.createOrder(productId, orderStatus)
-        setModalActive(false)
-        navigate('/my-history')
-
-
+    const handleClick =(id) =>{
+        if(token){
+           http.post("/order/create/" , {
+            product: id-0,
+            status: "under"
+           }).then((res)=>{
+            console.log(res.data)
+            navigate("/orders")
+           }).catch((err)=>{
+            console.log(err)
+           })
+        }else{
+          navigate("login")
+        }
     }
-
     return (<div className="product__wrapper" onClick={() => setModalActive(!modalActive)}>
-
-         <img className="porduct__img" src={product.images?.at(0)?.image} alt=""/>
-         
+         <img className="porduct__img" src={product.images?.at(0)?.image} alt=""/>         
         <h2 className="product__title">{product.title}</h2>
-        <h4 className="product__price">{product.price}$</h4>
+        <h4 className="product__price">{product.price} {product?.currency_title}</h4>
         <p className="product__description">{product.description}</p>
         <Modal active={modalActive} setActive={setModalActive}>
             <ProductCard>
@@ -79,11 +85,11 @@ export default function ProductCardComponent({product}) {
                 
                 {/* <img src={product.photo} alt=""/> */}
                 <h2>{product?.title}</h2>
-                <h4 className="product__price">{product?.price}</h4>
+                <h4 className="product__price">{product?.price} {product?.currency_title}</h4>
                 <p>{product?.description}</p>
             </ProductCard>
             <ModalButtonsWrapper active={buttonActive}>
-                <button onClick={() => handleClick(product.id, 2)} onMouseOver={() => setButtonActive(true)}>
+                <button onClick={() => handleClick(product?.id)} onMouseOver={() => setButtonActive(true)}>
                     Забронировать
                 </button>
               
