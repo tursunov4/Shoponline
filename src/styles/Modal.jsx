@@ -22,6 +22,7 @@ const ModalWrapper = styled.div`
 `;
 const ModalContent = styled.div`
   padding: 20px;
+  max-width:700px;
   #height: 100vh;
   overflow: auto;
   background-color: ${bodyColors.mainBlockBackgroundColor};

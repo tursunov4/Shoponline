@@ -4,14 +4,17 @@ import { bodyColors, device } from "./global.jsx";
 const ProductsWrapper = styled.div`
   color: ${bodyColors.mainTextColor};
   display: flex;
+  margin:40px 0;
   flex-wrap: wrap;
-  width: 100%;
+  justify-content:space-around;
+  gap:30px;
   cursor: pointer;
 `;
 const ProductCard = styled.div`
   position: relative;
-  padding: 10px;
+  padding: 20px 10px;
   flex: 1 1 25%;
+  width:300px ;
   margin: 10px;
   text-align: center;
   background-color: ${bodyColors.mainBlockBackgroundColor};
@@ -21,6 +24,7 @@ const ProductCard = styled.div`
 
   &:hover {
     > img {
+      height:300px;
       transform: scale(1.1);
     }
   }

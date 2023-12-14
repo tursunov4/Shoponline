@@ -150,6 +150,44 @@ const SideBarLink = styled(NavLink)`
     }
 `
 
+const SideBarLinka = styled.a`
+    display:flex;
+    justify-content: ${closedSidebarBodyJustify};
+    align-items: center;
+    color: ${bodyColors.mainTextColor};
+    font-size: 1.2em;
+    text-decoration:none;
+    font-weight:400;
+    transition: 0.2s ease-in-out;
+    &.active{
+        color:${bodyColors.activeLinkColor};
+    }
+    &:hover{ 
+        > span{
+            > svg{
+                animation: ${rotate} 1s linear infinite;
+            }
+        }      
+    }
+    > span {
+        display: ${props => props.open ? displayBlock : displayNone};
+        
+        align-items:center;
+        justify-content: ${closedSidebarBodyJustify};
+        padding: 15px 5px;
+    }
+    > h5 {
+        margin-left: 10px;
+        display: ${props => props.open ? displayBlock : displayNone};
+    }
+    @media ${device.laptop} { 
+        justify-content: ${props => props.open ? openedSidebarBodyLinkJustify : closedSidebarBodyJustify};
+        > span {
+            display:${displayFlex};
+        }
+    }
+`
+
 const SideBarHeader5 = styled.h5`
     margin: 10px 0;
     color:gray;
@@ -160,4 +198,4 @@ const SideBarHeader5 = styled.h5`
     }
 `
 
-export {SidebarStyled, SideBarBody, SideBarHeader, SideBarLink, SideBarProfileWrapper, SideBarHeader5};
+export {SidebarStyled, SideBarBody, SideBarHeader, SideBarLink, SideBarProfileWrapper, SideBarHeader5 ,SideBarLinka};

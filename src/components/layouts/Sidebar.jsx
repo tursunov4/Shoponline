@@ -21,6 +21,7 @@ export default function Sidebar() {
     flexWrap: "wrap",
     width: "100%",
   };
+  const token = sessionStorage.getItem("token")
 
   return (
     <div style={style}>
@@ -32,7 +33,10 @@ export default function Sidebar() {
               <HiOutlineMenu />
             </button>
           </SideBarHeader>
-          {userContext.isAuthenticated && <SideBarProfile open={open} />}
+          {
+            token &&
+             <SideBarProfile open={open} />
+          }
 
           <SideBarLinks open={open} />
         </SideBarBody>

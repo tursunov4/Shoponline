@@ -22,7 +22,6 @@ const LoginForm = styled.form`
     > span {
       color: ${bodyColors.semiTextColor};
     }
-
     > label {
       color: ${bodyColors.mainTextColor};
       font-size: 1.2em;
