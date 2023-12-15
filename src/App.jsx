@@ -26,11 +26,10 @@ function App() {
           token && <Route path="/my-history" element={<Orderhistory/>} />
          }
          <Route path='/login' element={<LoginPage/>} />
-
         </Route>
         <Route path='/accounts/callback' element={<Loading/> } />
       </Routes>  
-
+ 
   )
 }
 

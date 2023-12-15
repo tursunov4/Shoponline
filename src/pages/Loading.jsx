@@ -7,12 +7,12 @@ import { Preloader, PreloaderWrapper } from '../styles/Preloader';
 
 const Loading = () => {
   const navigate = useNavigate()
-  const queryParams = new URLSearchParams(location.search);
+  const queryParams = new URLSearchParams(window.location.search);
   const token = queryParams.get('token');
 
   useEffect(()=>{
     if(token){
-      sessionStorage.setItem("token" , token)
+      sessionStorage.setItem("token", token)
       navigate("/")
     }else{
       navigate("/")
