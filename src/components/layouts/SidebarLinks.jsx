@@ -25,15 +25,14 @@ export default function SideBarLinks({open , setOpen}) {
         </div>
       ))} */}
             <SideBarLink  onClick={()=>setOpen(false)}  open={open} to={"/"}>
-              <h5>Магазин</h5>
+              <h5>Market</h5>
               <span><AiOutlineShoppingCart /></span>
             </SideBarLink>
             {
               token &&
-              <>
-            
+              <>            
             <SideBarLink onClick={()=>setOpen(false)} open={open} to={"/orders"}>
-              <h5>Заявки</h5>
+              <h5>Orders</h5>
               <span><TbMessage2Exclamation /></span>
             </SideBarLink>
 
@@ -42,11 +41,10 @@ export default function SideBarLinks({open , setOpen}) {
               <span><CgProfile /></span>
             </SideBarLink>
             
-            {/* <SideBarHeader5 open={open} >История покупок</SideBarHeader5>
             <SideBarLink open={open} to={"/my-history"}>
-              <h5>История покупок</h5>
+              <h5>History Order</h5>
               <span><AiOutlineHistory /></span>
-            </SideBarLink> */}
+            </SideBarLink>
               </>
             }
     
@@ -54,23 +52,19 @@ export default function SideBarLinks({open , setOpen}) {
             {
               token ? <>
             
-              <SideBarLink onClick={()=>{setOpen(false) }} open={open} to={"/auth"}>    
-                <h5>Выход</h5>
+              <SideBarLink onClick={()=>{setOpen(false) }} open={open} to={"/login"}>    
+                <h5>Logout</h5>
               <span><ImExit /></span>          
               </SideBarLink>
               </> :<>
-            <SideBarLink onClick={()=>{setOpen(false)  }} open={open} to={"/auth"} >    
-            <h5>Вход</h5>
+            <SideBarLink onClick={()=>{setOpen(false)  }} open={open} to={"/login"} >    
+            <h5>Login</h5>
               <span><SlLogin /></span>          
               </SideBarLink>
               </>
             }
           
-            <SideBarHeader5 open={open} >Contacts</SideBarHeader5>
-            <SideBarLink onClick={()=>setOpen(false)} open={open} to={"/contact-us"}>
-              <h5>Связь с нами</h5>
-              <span><BsFillPersonLinesFill  /></span>
-            </SideBarLink>
+          
     </div>
   );
 }

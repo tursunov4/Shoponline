@@ -5,7 +5,7 @@ import {useState} from "react";
 import OrderServices from "../../../services/OrderServices.jsx";
 import {useNavigate} from "react-router-dom"
 
-import "./product.css"
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -14,7 +14,7 @@ import 'swiper/css/thumbs';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import http from "../../axios.js";
 
-export default function ProductCardComponent({product}) {
+export default function OrderProduct({product}) {
     const [modalActive, setModalActive] = useState(false);
     const [buttonActive, setButtonActive] = useState(false);
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -98,7 +98,7 @@ export default function ProductCardComponent({product}) {
             </div>
             <ModalButtonsWrapper active={buttonActive}>
                 <button onClick={() => handleClick(product?.id)} onMouseOver={() => setButtonActive(true)}>
-                   Booking
+                  Cancel
                 </button>
               
             </ModalButtonsWrapper>

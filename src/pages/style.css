@@ -47,3 +47,24 @@
     color: gold;
     cursor: pointer;
 }
+.paginate__btn{
+    outline: none;
+    cursor: pointer;
+    background-color: #1F2A40;
+    border: none;
+    width: 25px;
+    height: 25px;
+    color: white;
+    border-radius: 3px;
+}
+.paginate__btn-active{
+    color: #FFCF01 !important;
+    transform: scale(1.1);  
+}
+
+.paginate__wrap{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+
+}

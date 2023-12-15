@@ -9,12 +9,13 @@ import http from "../axios.js";
 import { useDebounce } from "../hooks/useDebance.jsx";
 export default function OrdersPage() {
     const headers = [
-        "Id заказа",
-        "Наименование",
-        "Цена",
-        "currency",
-        "Дата заявки",
-        "Статус",
+        "Order ID",
+        "Title",
+        "Price",
+        "Currency",
+        "Application date",
+        "Status",
+        "Expired time"
     ];
     const [data ,setData] = useState([])
     const [search ,setSearch] = useState("")

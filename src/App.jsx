@@ -7,6 +7,7 @@ import Loading from './pages/Loading';
 import UserProfile from './pages/Profile';
 import OrdersPage from './pages/OrdersPage';
 import NotFound from './pages/NotFound';
+import Orderhistory from "./pages/Orderhistory";
 function App() {
   const token = sessionStorage.getItem("token")
   return (
@@ -14,15 +15,17 @@ function App() {
       <Routes>
          <Route path='*' element={<NotFound/>} />
          <Route path='/' element={<Sidebar/>}>
-      <Route path='/' element={<Shopage/>}/>
+         <Route index element={<Shopage/>}/>
           {
             token &&  <Route path='/profil' element={<UserProfile/>}/>
           }
          {
           token && <Route path='/orders' element={<OrdersPage/>} />
          }
-
-        <Route path='/auth' element={<LoginPage/>} />
+         {
+          token && <Route path="/my-history" element={<Orderhistory/>} />
+         }
+         <Route path='/login' element={<LoginPage/>} />
 
         </Route>
         <Route path='/login/callback' element={<Loading/> } />
