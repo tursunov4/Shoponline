@@ -14,18 +14,18 @@ function App() {
       <Routes>
          <Route path='*' element={<NotFound/>} />
         <Route path='/' element={<Sidebar/>}>
-        <Route index element={<Shopage/>}/>
-        {
+        <Route path='/' element={<Shopage/>}/>
+        {/* {
           token &&  <Route path='/profil' element={<UserProfile/>}/>
         }
         {
           token && <Route path='/orders' element={<OrdersPage/>} />
-        }
+        } */}
 
+        <Route path='/login/callback' element={<Loading/> } />
         <Route path='log' element={<LoginPage/>} />
 
         </Route>
-        <Route path='/login/callback' element={<Loading/> } />
       </Routes>  
 
   )
