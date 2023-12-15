@@ -41,19 +41,25 @@ export default function ProductCardComponent({product}) {
         <h4 className="product__price">{product.price} {product?.currency_title}</h4>
         <p className="product__description">{product.description}</p>
         <Modal active={modalActive} setActive={setModalActive}>
-            <ProductCard>
+            <div className="product__modalwrap">
             <Swiper
         style={{
           '--swiper-navigation-color': '#1F2A40',
           '--swiper-pagination-color': '#1F2A40',
         }}
-        loop={true}
+        // loop={true}
         spaceBetween={10}
         navigation={true}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
         className="modalslide1"
       >
+        {
+          product?.video &&
+          <SwiperSlide >
+            <video className="modal_img" width="100%"  height={"100%"} preload="none" autoPlay   muted  loop src={product?.video} alt=""/>
+          </SwiperSlide>
+        }
         {
           product.images?.map((item , index) =>(
             <SwiperSlide key={index}>
@@ -64,7 +70,7 @@ export default function ProductCardComponent({product}) {
       </Swiper>
       <Swiper
         onSwiper={setThumbsSwiper}
-        loop={true}
+        // loop={true}
         spaceBetween={10}
         slidesPerView={4}
         freeMode={true}
@@ -73,21 +79,29 @@ export default function ProductCardComponent({product}) {
         className="modalslide2"
       >
         {
+          product?.video &&
+         <SwiperSlide >
+        <video  width="100%" height={"100%"}  preload="none" autoPlay   muted  loop className="modalslide2__img" src={product?.video} alt=""/>
+        </SwiperSlide>
+        }
+
+         
+        {
           product?.images?.map((item , index)=>(
         <SwiperSlide key={index}>
         <img className="modalslide2__img" src={item?.image} alt=""/>
         </SwiperSlide>
           ))
         }
-
+       
         
       </Swiper>
                 
-                {/* <img src={product.photo} alt=""/> */}
+               
                 <h2>{product?.title}</h2>
                 <h4 className="product__price">{product?.price} {product?.currency_title}</h4>
                 <p>{product?.description}</p>
-            </ProductCard>
+            </div>
             <ModalButtonsWrapper active={buttonActive}>
                 <button onClick={() => handleClick(product?.id)} onMouseOver={() => setButtonActive(true)}>
                     Забронировать

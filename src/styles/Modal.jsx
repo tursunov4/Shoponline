@@ -5,7 +5,7 @@ const ModalWrapper = styled.div`
   padding-top:10px; 
   z-index: 3;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   background-color: rgba(0, 0, 0, 0.6);
   position: fixed;
   overflow: auto;
@@ -22,7 +22,7 @@ const ModalWrapper = styled.div`
 `;
 const ModalContent = styled.div`
   padding: 20px;
-  max-width:700px;
+  width:80vw;
   #height: 100vh;
   overflow-y: auto;
   background-color: ${bodyColors.mainBlockBackgroundColor};
@@ -59,10 +59,13 @@ const SvgClose = styled.div`
 
 const ModalButtonsWrapper = styled.div`
   display: flex;
-  max-width: 100% !important;
+  margin:0 auto;
+  margin-top:10px;
+  justify-content:center;
   > button {
     display: block;
-    flex: 1 1;
+  
+    width:300px;
     border: none;
     cursor: pointer;
     padding: 10px;
