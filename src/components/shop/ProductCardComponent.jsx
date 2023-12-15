@@ -57,7 +57,7 @@ export default function ProductCardComponent({product}) {
         {
           product?.video &&
           <SwiperSlide >
-            <video className="modal_img" width="100%"  height={"100%"} preload="none" autoPlay   muted  loop src={product?.video} alt=""/>
+            <video className="modal_img" width="100%"  height={"100%"} controls src={product?.video} alt=""/>
           </SwiperSlide>
         }
         {
