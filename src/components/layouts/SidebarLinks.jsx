@@ -51,11 +51,6 @@ export default function SideBarLinks({open , setOpen}) {
             }
     
        
-            {/* <SideBarHeader5 open={open} >Contacts</SideBarHeader5>
-            <SideBarLink onClick={()=>setOpen(false)} open={open} to={"/contact-us"}>
-              <h5>Связь с нами</h5>
-              <span><BsFillPersonLinesFill  /></span>
-            </SideBarLink> */}
             {
               token ? <>
             
@@ -71,6 +66,11 @@ export default function SideBarLinks({open , setOpen}) {
               </>
             }
           
+            <SideBarHeader5 open={open} >Contacts</SideBarHeader5>
+            <SideBarLink onClick={()=>setOpen(false)} open={open} to={"/contact-us"}>
+              <h5>Связь с нами</h5>
+              <span><BsFillPersonLinesFill  /></span>
+            </SideBarLink>
     </div>
   );
 }
