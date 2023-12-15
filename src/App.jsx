@@ -28,7 +28,7 @@ function App() {
          <Route path='/login' element={<LoginPage/>} />
 
         </Route>
-        <Route path='/login/callback' element={<Loading/> } />
+        <Route path='/accounts/callback' element={<Loading/> } />
       </Routes>  
 
   )
