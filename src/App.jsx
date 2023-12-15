@@ -24,8 +24,8 @@ function App() {
 
         <Route path='/log' element={<LoginPage/>} />
 
-        <Route path='/login/callback' element={<Loading/> } />
         </Route>
+        <Route path='/login/callback' element={<Loading/> } />
       </Routes>  
 
   )
