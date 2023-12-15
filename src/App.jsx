@@ -10,17 +10,12 @@ import Loading from './pages/Loading';
 import UserProfile from './pages/Profile';
 import OrdersPage from './pages/OrdersPage';
 import NotFound from './pages/NotFound';
-const oktaAuth = new OktaAuth(config.oidc);
 function App() {
   const token = sessionStorage.getItem("token")
-  const navigate = useNavigate();
-  const restoreOriginalUri = (_oktaAuth,  originalUri) => {
-    navigate(toRelativeUrl(originalUri || '/', window.location.origin));
-  };
 
 
   return (
-    <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
+   
       <Routes>
          <Route path='*' element={<NotFound/>} />
         <Route path='/' element={<Sidebar/>}>
@@ -35,7 +30,7 @@ function App() {
         <Route path='/login/callback' element={<Loading/> } />
         </Route>
       </Routes>  
-  </Security>
+
   )
 }
 

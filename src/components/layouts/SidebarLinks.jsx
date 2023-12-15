@@ -22,8 +22,6 @@ export default function SideBarLinks({open , setOpen}) {
           ))}
         </div>
       ))} */}
-     
-     <SideBarHeader5 open={open} >Data</SideBarHeader5>
             <SideBarLink  onClick={()=>setOpen(false)}  open={open} to={"/"}>
               <h5>Магазин</h5>
               <span><AiOutlineShoppingCart /></span>
@@ -31,12 +29,12 @@ export default function SideBarLinks({open , setOpen}) {
             {
               token &&
               <>
-               <SideBarHeader5 open={open} >Заявки</SideBarHeader5>
+            
             <SideBarLink onClick={()=>setOpen(false)} open={open} to={"/orders"}>
               <h5>Заявки</h5>
               <span><TbMessage2Exclamation /></span>
             </SideBarLink>
-               <SideBarHeader5 open={open} >Profile</SideBarHeader5>
+
             <SideBarLink onClick={()=>setOpen(false)} open={open} to={"/profil"}>
               <h5>Profile</h5>
               <span><CgProfile /></span>
@@ -58,13 +56,12 @@ export default function SideBarLinks({open , setOpen}) {
             </SideBarLink> */}
             {
               token ? <>
-              <SideBarHeader5 open={open} >Log</SideBarHeader5>
+            
               <SideBarLink onClick={()=>setOpen(false)} open={open} to={"/login"}>    
                 <h5>Выход</h5>
               <span><ImExit /></span>          
               </SideBarLink>
               </> :<>
-              <SideBarHeader5 open={open}  >Log</SideBarHeader5>
             <SideBarLink onClick={()=>setOpen(false)} open={open} to={"/login"} >    
             <h5>Вход</h5>
               <span><SlLogin /></span>          
