@@ -59,12 +59,12 @@ export default function SideBarLinks({open , setOpen}) {
             {
               token ? <>
             
-              <SideBarLink onClick={()=>{setOpen(false) ; navigate("/login")}} open={open} to={"/login"}>    
+              <SideBarLink onClick={()=>{setOpen(false) }} open={open} to={"/log"}>    
                 <h5>Выход</h5>
               <span><ImExit /></span>          
               </SideBarLink>
               </> :<>
-            <SideBarLink onClick={()=>{setOpen(false) ; navigate("/login") }} open={open} to={"/login"} >    
+            <SideBarLink onClick={()=>{setOpen(false)  }} open={open} to={"/log"} >    
             <h5>Вход</h5>
               <span><SlLogin /></span>          
               </SideBarLink>

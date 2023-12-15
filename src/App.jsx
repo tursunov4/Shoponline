@@ -1,8 +1,5 @@
 
-import { useNavigate , Routes , Route } from 'react-router-dom';
-import { Security      } from '@okta/okta-react';
-import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
-import config from './config';
+import {  Routes , Route } from 'react-router-dom';
 import Sidebar from "./components/layouts/Sidebar"
 import Shopage from "./pages/ShopPage"
 import LoginPage from './pages/LoginPage';
@@ -12,8 +9,6 @@ import OrdersPage from './pages/OrdersPage';
 import NotFound from './pages/NotFound';
 function App() {
   const token = sessionStorage.getItem("token")
-
-
   return (
    
       <Routes>
@@ -26,7 +21,9 @@ function App() {
         {
           token && <Route path='/orders' element={<OrdersPage/>} />
         }
-        <Route path='/login' element={<LoginPage/>} />
+
+        <Route path='/log' element={<LoginPage/>} />
+
         <Route path='/login/callback' element={<Loading/> } />
         </Route>
       </Routes>  
