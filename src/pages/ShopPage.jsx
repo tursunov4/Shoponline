@@ -23,13 +23,13 @@ export default function ShopPage() {
     const [selectorga ,setSelectorga] = useState("")  
     const pl ="dadfa"  
     const getOffice =()=>{
-        axios.get( server_url + "/office/list/").then((res)=>{
+        axios.get( server_url + "/api/v1/office/list/").then((res)=>{
             console.log(res.data)       
             setOficeOption(res.data)
         }).catch((err)=>{
             console.log(err)
         })
-        axios.get( server_url +"/organization/list/").then((res)=>{
+        axios.get( server_url +"/api/v1/organization/list/").then((res)=>{
             console.log(res.data)
             setOrganization(res.data)
         }).catch((err)=>{
@@ -39,7 +39,7 @@ export default function ShopPage() {
 
      const getData = ()=>{
         setIsLoading(true)
-      axios.get( server_url +`/product/list/?title=${searchDebance}&office=${selectoffice}&organization=${selectorga}`).then((res)=>{
+      axios.get( server_url +`/api/v1/product/list/?title=${searchDebance}&office=${selectoffice}&organization=${selectorga}`).then((res)=>{
         console.log(res.data.results )
          setData(res.data.results)
         setIsLoading(false)

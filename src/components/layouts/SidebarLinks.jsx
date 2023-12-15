@@ -5,6 +5,7 @@ import { BsFillPersonLinesFill } from "react-icons/bs";
 import { SlLogin } from "react-icons/sl";
 import { TbMessage2Exclamation } from "react-icons/tb";
 import { ImExit } from "react-icons/im";
+import { CgProfile } from "react-icons/cg";
 
 export default function SideBarLinks({open , setOpen}) {
   const token = sessionStorage.getItem("token")
@@ -35,6 +36,11 @@ export default function SideBarLinks({open , setOpen}) {
               <h5>Заявки</h5>
               <span><TbMessage2Exclamation /></span>
             </SideBarLink>
+               <SideBarHeader5 open={open} >Profile</SideBarHeader5>
+            <SideBarLink onClick={()=>setOpen(false)} open={open} to={"/profil"}>
+              <h5>Profile</h5>
+              <span><CgProfile /></span>
+            </SideBarLink>
             
             {/* <SideBarHeader5 open={open} >История покупок</SideBarHeader5>
             <SideBarLink open={open} to={"/my-history"}>
@@ -45,11 +51,11 @@ export default function SideBarLinks({open , setOpen}) {
             }
     
        
-            <SideBarHeader5 open={open} >Contacts</SideBarHeader5>
+            {/* <SideBarHeader5 open={open} >Contacts</SideBarHeader5>
             <SideBarLink onClick={()=>setOpen(false)} open={open} to={"/contact-us"}>
               <h5>Связь с нами</h5>
               <span><BsFillPersonLinesFill  /></span>
-            </SideBarLink>
+            </SideBarLink> */}
             {
               token ? <>
               <SideBarHeader5 open={open} >Log</SideBarHeader5>

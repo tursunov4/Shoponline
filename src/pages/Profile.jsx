@@ -1,30 +1,30 @@
-import  { useEffect } from 'react';
-import { useOktaAuth } from '@okta/okta-react';
+import { useEffect, useState } from "react";
+import http from "../axios";
+import Avatar from "../assets/user.png"
 
 const UserProfile = () => {
-  const { authState, oktaAuth , authClient } = useOktaAuth();
-
-  useEffect(() => {
-
-      // If the user is authenticated, fetch user info
-      if (authClient?.isLoginRedirect()) {
-        try {
-           authClient.handleLoginRedirect();
-        } catch (e) {
-          // log or display error details
-        }
-      } else if (! authClient?.isAuthenticated()) {
-        // Start the browser based oidc flow, then parse tokens from the redirect callback url
-        authClient.signInWithRedirect();
-      } else {
-        // User is authenticated
-      }
-  }, []);
-
+   const [data ,setData] = useState({})
+   const getData =()=>{
+    http.get("/profile/user-me/").then((res)=>{
+      setData(res.data)
+    }).catch((err)=>{
+      console.log(err)
+    })
+   }
+   useEffect(()=>{
+    getData()
+   }, [])
   return (
     <div>
-      <h1>User Profile</h1>
-      {/* Display other user information if needed */}
+      <div className="profile__wrapper">
+        <img className="profile__img" width={250} height={250} src={Avatar} alt="" />
+        <div className="profile-text">
+           <h3>First Name: {data?.first_name}</h3>
+           <h3>Last Name: {data?.last_name}</h3>
+           <h3>Username : {data?.username}</h3>
+            <h3>Email  :{data?.email}</h3>
+        </div>
+      </div>
     </div>
   );
 };

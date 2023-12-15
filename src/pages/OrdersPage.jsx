@@ -22,7 +22,7 @@ export default function OrdersPage() {
     const searchDebounce = useDebounce(search, 500)
     const getOrders =()=>{  
         setIsLoading(true)
-        http.get(`/order/list/?status=${searchDebounce}`).then((res)=>{
+        http.get(`/api/v1/order/list/?status=${searchDebounce}`).then((res)=>{
             console.log(res.data)
             setData(res.data)
             setIsLoading(false)
@@ -51,10 +51,9 @@ export default function OrdersPage() {
                     type="text"
                     placeholder="Search..."
                 />
-                <button
-                   
+                <button                   
                 >
-                    <AiOutlineSearch/>
+                 <AiOutlineSearch/>
                 </button>
             </Search>
             <TableWrapper>

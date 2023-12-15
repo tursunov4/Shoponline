@@ -24,7 +24,7 @@ const ModalContent = styled.div`
   padding: 20px;
   max-width:700px;
   #height: 100vh;
-  overflow: auto;
+  overflow-y: auto;
   background-color: ${bodyColors.mainBlockBackgroundColor};
   transform: scale(${(props) => (props.active ? "1" : "0.1")});
   transition: all 0.2s ease-in-out;

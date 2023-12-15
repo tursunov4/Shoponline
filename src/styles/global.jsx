@@ -57,7 +57,7 @@ const device = {
 
 const HeadTitle = styled.h1`
   color: ${bodyColors.mainTextColor};
-  font-size: 4rem;
+  font-size: 50px ;
 `;
 
 const SelectStyled = styled.select`
