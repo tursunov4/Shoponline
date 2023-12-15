@@ -1,5 +1,5 @@
 
-import {  Routes , Route } from 'react-router-dom';
+import {  Routes , Route } from "react-router-dom";
 import Sidebar from "./components/layouts/Sidebar"
 import Shopage from "./pages/ShopPage"
 import LoginPage from './pages/LoginPage';
@@ -13,14 +13,14 @@ function App() {
    
       <Routes>
          <Route path='*' element={<NotFound/>} />
-        <Route path='/' element={<Sidebar/>}>
-        <Route path='/' element={<Shopage/>}/>
-        {/* {
+             <Route path='/' element={<Sidebar/>}>
+          <Route path='/' element={<Shopage/>}/>
+        {
           token &&  <Route path='/profil' element={<UserProfile/>}/>
         }
         {
           token && <Route path='/orders' element={<OrdersPage/>} />
-        } */}
+        }
 
         <Route path='/login/callback' element={<Loading/> } />
         <Route path='log' element={<LoginPage/>} />
