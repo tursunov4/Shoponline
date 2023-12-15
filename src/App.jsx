@@ -22,10 +22,10 @@ function App() {
           token && <Route path='/orders' element={<OrdersPage/>} />
         }
 
-        <Route path='/login/callback' element={<Loading/> } />
         <Route path='log' element={<LoginPage/>} />
 
         </Route>
+        <Route path='/login/callback' element={<Loading/> } />
       </Routes>  
 
   )
