@@ -6,8 +6,10 @@ import { SlLogin } from "react-icons/sl";
 import { TbMessage2Exclamation } from "react-icons/tb";
 import { ImExit } from "react-icons/im";
 import { CgProfile } from "react-icons/cg";
+import {useNavigate} from "react-router-dom"
 
 export default function SideBarLinks({open , setOpen}) {
+  const navigate = useNavigate()
   const token = sessionStorage.getItem("token")
   return (
     <div>
@@ -57,12 +59,12 @@ export default function SideBarLinks({open , setOpen}) {
             {
               token ? <>
             
-              <SideBarLink onClick={()=>setOpen(false)} open={open} to={"/login"}>    
+              <SideBarLink onClick={()=>{setOpen(false) ; navigate("/login")}} open={open} to={"/login"}>    
                 <h5>Выход</h5>
               <span><ImExit /></span>          
               </SideBarLink>
               </> :<>
-            <SideBarLink onClick={()=>setOpen(false)} open={open} to={"/login"} >    
+            <SideBarLink onClick={()=>{setOpen(false) ; navigate("/login") }} open={open} to={"/login"} >    
             <h5>Вход</h5>
               <span><SlLogin /></span>          
               </SideBarLink>
