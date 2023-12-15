@@ -1,5 +1,5 @@
 import styled, {keyframes} from 'styled-components';
-import {NavLink} from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 import {bodyColors, device} from "./global.jsx";
 import {rotate} from "./animations.jsx";
 
