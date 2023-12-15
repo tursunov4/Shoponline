@@ -26,7 +26,6 @@ export default function ShopPage() {
     const getOffice =()=>{
         axios.get( server_url + "/api/v1/office/list/").then((res)=>{
             setOficeOption(res.data)
-
         }).catch((err)=>{
             console.log(err)
         })
